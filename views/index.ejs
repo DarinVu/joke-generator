@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke App</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Martian+Mono&family=Newsreader:opsz,wght@6..72,500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <% if (locals.joke) { %>
+            <div class="joke text">
+                <%= joke %>
+            </div>
+        <% } else if (locals.delivery) { %>
+            <div class="joke text">
+                <%= setup + " " + delivery %>
+            </div>
+        <% } else if (locals.error) { %>
+            <div class="error text">
+                ERROR: Could not find generate a joke containing "<%= word %>"
+            </div>
+        <% } %>
+        <div class="title-box">Joke Generator</div>
+        <div class="main-box">
+            <div>Type in any word and a joke will be created!</div>
+            <div>
+                <form action="/topic" method="POST">
+                    <div class="add-container">
+                        <div>
+                            Enter Word: <input id="inputAdd" name="topicInput" type="text" >
+                        </div>
+                        <div>
+                            <input id="add" type="submit" value="Generate"> 
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
